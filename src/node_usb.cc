@@ -92,7 +92,7 @@ extern "C" void Initialize(Local<Object> target) {
 	Nan::SetMethod(target, "_disableHotplugEvents", DisableHotplugEvents);
 }
 
-NODE_MODULE(usb_bindings, Initialize)
+NAN_MODULE_WORKER_ENABLED(usb_bindings, Initialize)
 
 NAN_METHOD(SetDebugLevel) {
 	Nan::HandleScope scope;
