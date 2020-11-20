@@ -1,3 +1,10 @@
+DO NOT DELETE, it is a dependency of our [Lightspeed Hub](https://github.com/lightspeedretail/hub-platform/) application.
+===============
+### TODO: Delete this fork and use the upstream `node-usb` lib once:
+- `libusb` supports HotPlug on Windows - https://github.com/libusb/libusb/issues/86
+- `node-usb` updates to upstream `libusb` - https://github.com/tessel/node-usb/issues/161
+
+
 USB Library for Node.JS
 ===============================
 

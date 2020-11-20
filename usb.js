@@ -509,8 +509,11 @@ OutEndpoint.prototype.transferWithZLP = function (buf, cb) {
 }
 
 var hotplugListeners = 0;
+var isWindows = process && (process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE));
+
 exports.on('newListener', function(name) {
 	if (name !== 'attach' && name !== 'detach') return;
+	if (isWindows) return;
 	if (++hotplugListeners === 1) {
 		usb._enableHotplugEvents();
 	}
@@ -518,6 +521,7 @@ exports.on('newListener', function(name) {
 
 exports.on('removeListener', function(name) {
 	if (name !== 'attach' && name !== 'detach') return;
+	if (isWindows) return;
 	if (--hotplugListeners === 0) {
 		usb._disableHotplugEvents();
 	}

@@ -1,7 +1,7 @@
 {
   "name": "usb",
   "description": "Library to access USB devices",
-  "version": "1.6.3",
+  "version": "1.6.3-0",
   "engines": {
     "node": ">=6"
   },
@@ -27,10 +27,10 @@
   "main": "./usb",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tessel/node-usb.git"
+    "url": "https://github.com/lightspeedretail/node-usb.git"
   },
   "scripts": {
-    "install": "prebuild-install --verbose || node-gyp rebuild",
+    "install": "node ./scripts/post-install.js && (prebuild-install --verbose || node-gyp rebuild)",
     "prebuild": "prebuild --force --strip --verbose",
     "test": "mocha --require coffeescript/register --grep Module test/*",
     "full-test": "mocha --require coffeescript/register test/*",
@@ -39,7 +39,7 @@
   "dependencies": {
     "bindings": "^1.4.0",
     "nan": "2.13.2",
-    "prebuild-install": "^5.3.3"
+    "prebuild-install": "^5.3.5"
   },
   "resolutions": {
     "**/nan": "2.13.2"
@@ -47,6 +47,7 @@
   "devDependencies": {
     "coffeescript": "~2.4.1",
     "mocha": "~6.1.4",
+    "node-abi": "^2.19.1",
     "prebuild": "^9.1.1"
   },
   "license": "MIT"

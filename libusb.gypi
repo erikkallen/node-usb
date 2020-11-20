@@ -1,6 +1,9 @@
 {
   'variables': {
     'use_udev%': 1,
+    'use_system_libusb%': 'false',
+    'module_name': 'usb_bindings',
+    'module_path': './src/binding'
   },
   'targets': [
     {
@@ -40,8 +43,8 @@
       'conditions': [
         [ 'OS == "linux" or OS == "android" or OS == "mac"', {
           'sources': [
-            'libusb/libusb/os/poll_posix.c',
-            'libusb/libusb/os/poll_posix.h',
+            'libusb/libusb/os/events_posix.c',
+            'libusb/libusb/os/events_posix.h',
             'libusb/libusb/os/threads_posix.c',
             'libusb/libusb/os/threads_posix.h',
           ],
@@ -106,16 +109,17 @@
         }],
         [ 'OS == "win"', {
           'sources': [
-            'libusb/libusb/os/poll_windows.c',
-            'libusb/libusb/os/poll_windows.h',
+            'libusb/libusb/os/events_windows.c',
+            'libusb/libusb/os/events_windows.h',
             'libusb/libusb/os/threads_windows.c',
             'libusb/libusb/os/threads_windows.h',
+            'libusb/libusb/os/windows_common.c',
             'libusb/libusb/os/windows_common.h',
-            'libusb/libusb/os/windows_usb.c',
-            'libusb/libusb/os/windows_usb.h',
+            'libusb/libusb/os/windows_usbdk.c',
+            'libusb/libusb/os/windows_usbdk.h',
+            'libusb/libusb/os/windows_winusb.c',
+            'libusb/libusb/os/windows_winusb.h',
             'libusb/msvc/config.h',
-            'libusb/msvc/inttypes.h',
-            'libusb/msvc/stdint.h',
           ],
           'include_dirs!': [
             'libusb_config',
